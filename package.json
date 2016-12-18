@@ -1,61 +1,37 @@
 {
   "name": "react-hot-boilerplate",
+  "version": "0.2.0",
   "description": "Dev environment to enable hot-live-editing for React components, preserving the state",
-  "version": "0.1.0",
   "author": "Gerardo Gallegos <puxerop@gmail.com>",
   "user": "gerardogallegos",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "start": "node server.js",
+    "start": "node dev-server.js",
     "build": "webpack",
-    "build:production": "webpack --config webpack-production.config.js -p"
-  },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/tests/jest-script-preprocessor.js",
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx"
-    ],
-    "moduleNameMapper": {
-      "^.*[.](jpg|JPG|gif|GIF|png|PNG|less|LESS|css|CSS|scss|SCSS)$": "<rootDir>/tests/EmptyModule.js"
-    },
-    "preprocessorIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils"
-    ]
+    "test": "mocha ./src/**/*.spec.js --compilers js:babel-core/register --require ignore-styles"
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.7.6",
-    "babel-jest": "^11.0.2",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-transform-object-rest-spread": "^6.6.5",
-    "babel-polyfill": "^6.7.4",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-jest": "^11.0.2",
-    "babel-preset-react": "^6.5.0",
-    "css-loader": "^0.23.1",
-    "eslint": "^2.8.0",
-    "eslint-plugin-react": "^5.0.1",
-    "jest": "^0.1.40",
-    "jest-cli": "^11.0.2",
-    "node-sass": "^3.4.2",
-    "react": "^15.0.1",
-    "react-addons-test-utils": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "react-hot-loader": "^1.3.0",
-    "sass-loader": "^3.2.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.26.1",
+    "expect": "^1.20.2",
+    "expect-jsx": "^2.6.0",
+    "ignore-styles": "^5.0.1",
+    "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.1",
+    "react-hot-loader": "^1.3.1",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^2.2.0-rc.0",
+    "webpack-dev-server": "^2.2.0-rc.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/GerardoGallegos/react-hot-boilerplate.git"
@@ -67,5 +43,5 @@
     "react",
     "reactjs",
     "boilerplate"
-  ]
+    ]
 }
