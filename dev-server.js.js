@@ -9,6 +9,7 @@ const SERVER = new WebpackDevServer(webpack(config), {
       chunks: false
   },
   hot: true,
+  historyApiFallback: true
 });
 
 SERVER.listen(3000, 'localhost', (err, result)=> {
