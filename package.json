@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dev-server.js",
-    "build": "webpack",
+    "build": "webpack -p",
     "test": "mocha ./src/**/*.spec.js --compilers js:babel-core/register --require ignore-styles"
   },
   "license": "MIT",

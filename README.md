@@ -18,3 +18,7 @@ We have a main component "Home" Inside of this will be loaded the children compo
 - [Babel](https://github.com/babel/babel/tree/master/packages/babel-core)
 - [Mocha](https://github.com/mochajs/mocha)
 
+# Build
+```sh
+npm install -g create-react-app
+```
