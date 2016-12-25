@@ -1,14 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import styled from 'styled-components'
 // actions
 import {
   increment,
   decrement
 } from '../../ducks/counter'
 
-import './styles.css'
- 
+
+
+const Button = styled.button`
+background-color: orange;
+cursor: pointer;
+transition: all .3s;
+  &:hover {
+    transform: scale(1.5);
+    background-color: red;
+  }
+`
+const Title = styled.h3`
+color: #00bcd4;
+cursor: pointer;
+transition: all .3s;
+  &:hover {
+    transform: scale(1.01);
+  }
+`
+
 export class ChildComponent extends Component {
   constructor(props) {
     super(props)
@@ -22,9 +40,6 @@ export class ChildComponent extends Component {
       this[method] = this[method].bind(this)
     })
 
-    this.state = {
-      count: 0
-    }
   }
 
   clickIncrement() {
@@ -42,9 +57,9 @@ export class ChildComponent extends Component {
       <div>
         <h2 className="subtitle">This is the child component conected width Redux</h2>
         <section className="card">
-          <h3 >Count: { count }</h3>
-          <button onClick={this.clickIncrement}>+</button>
-          <button onClick={this.clickDecrement}>-</button> 
+          <Title> Count: { count } </Title>
+          <Button onClick={this.clickIncrement}>+</Button>
+          <Button onClick={this.clickDecrement}>-</Button> 
         </section>
       </div>
     )
