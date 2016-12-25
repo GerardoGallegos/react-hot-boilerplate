@@ -2,7 +2,9 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount, render } from 'enzyme'
 import { Provider } from 'react-redux'
-import store from '../../store/store'
+import store from '../../store'
+
+// components
 import ChildComponent from './index'
 
 
@@ -14,11 +16,11 @@ describe('<ChildComponent @Conected />', ()=> {
         </Provider>
       )
 
-    it('Should render the component', ()=>{
+    it('Should render the component', ()=> {
         expect(wrapper).to.exist
     })
 
-    it('Should have a one div element', ()=>{
+    it('Should have a one div element', ()=> {
         expect(wrapper.find('div')).to.have.length(1)
     })
 
@@ -26,7 +28,7 @@ describe('<ChildComponent @Conected />', ()=> {
         expect(wrapper.find('button')).to.have.length(2)
     })
 
-    it('Testing click buttons', ()=> {
+    it('Testing interactions in click buttons', ()=> {
         expect(wrapper.props().store.getState().counter.count).to.equal(0)
 
         // click in increment button

@@ -7,7 +7,7 @@ const SERVER = new WebpackDevServer(webpack(config), {
   stats: {
       colors: true,
       chunks: false
-  },
+  }, 
   hot: true,
   historyApiFallback: true
 });

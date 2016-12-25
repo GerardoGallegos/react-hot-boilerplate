@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+// actions
+import {
+  increment,
+  decrement
+} from '../../ducks/counter'
+
 import './styles.css'
  
 export class ChildComponent extends Component {
@@ -22,15 +28,11 @@ export class ChildComponent extends Component {
   }
 
   clickIncrement() {
-    this.props.dispatch({
-      type: 'INCREMENT'
-    })
+    this.props.increment()
   }
 
   clickDecrement() {
-    this.props.dispatch({
-      type: 'DECREMENT'
-    })
+    this.props.decrement()
   }
 
 
@@ -49,8 +51,13 @@ export class ChildComponent extends Component {
   }
 }
 
-export default connect((state, props) => {
+const mapStateProps = (state, props) => {
   return {
       count: state.counter.count
     }
+}
+
+export default connect(mapStateProps, {
+  increment,
+  decrement
 })(ChildComponent)
