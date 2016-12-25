@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-
+import './styles.css'
+ 
 export class ChildComponent extends Component {
   constructor(props) {
     super(props)
@@ -14,6 +15,10 @@ export class ChildComponent extends Component {
     METHODS.forEach((method)=> {
       this[method] = this[method].bind(this)
     })
+
+    this.state = {
+      count: 0
+    }
   }
 
   clickIncrement() {
@@ -33,9 +38,9 @@ export class ChildComponent extends Component {
     const count = this.props.count
     return (
       <div>
-        <h2>This is the child component conected width Redux</h2>
-        <section>
-          <h3>Count: { count }</h3>
+        <h2 className="subtitle">This is the child component conected width Redux</h2>
+        <section className="card">
+          <h3 >Count: { count }</h3>
           <button onClick={this.clickIncrement}>+</button>
           <button onClick={this.clickDecrement}>-</button> 
         </section>

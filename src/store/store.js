@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
+import { routerReducer as routing } from 'react-router-redux'
 
 
 function counter(state = { count: 0 }, action) {
@@ -26,10 +26,10 @@ function _decrement (state) {
   return STATE
 }
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
   counter, 
-  routing: routerReducer
+  routing
 })
 
 
-export default createStore(reducers)
+export default createStore(rootReducer)

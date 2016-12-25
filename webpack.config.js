@@ -66,7 +66,12 @@ module.exports = {
         filename: "[name].bundle.js",
         publicPath: '/dist/',
     },
-     module: {
+    externals: {
+        'cheerio': 'window',
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true,
+    },
+    module: {
         rules: [
             {
                 test: /\.css$/,
