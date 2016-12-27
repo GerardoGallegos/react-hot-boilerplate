@@ -8,7 +8,7 @@ import "rxjs/add/operator/combineLatest";
 import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/map";
 import Ref from '../firebase'
-import store from './index'
+import store from '../store/'
 
 /****************************************************************************
  * 

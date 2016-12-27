@@ -34,6 +34,7 @@ export class ChildComponent extends Component {
     const METHODS = [
       'clickIncrement',
       'clickDecrement',
+      'clickSet',
       'updateFB',
       'submit'
     ]
@@ -53,7 +54,7 @@ export class ChildComponent extends Component {
   }
 
   clickSet() {
-    const input = this.refs.entrada.value
+    const input = this.refs.input.value
     this.updateFB(input)
   }
 
@@ -61,7 +62,7 @@ export class ChildComponent extends Component {
     const info_num = parseInt(info)
     if(info != '') {
       if(isNaN(info_num)) {
-        throw 'Is espected number not string'
+        throw `A number is expected in info, not ${typeof info}`
       } else {
         this.props.setFirebaseAsync(info_num)
       }
@@ -69,7 +70,7 @@ export class ChildComponent extends Component {
   }
 
   submit(e) {
-    const input = this.refs.entrada.value
+    const input = this.refs.input.value
     if(e.keyCode === 13 && input != '') {
       this.updateFB(input)
     }
@@ -86,7 +87,7 @@ export class ChildComponent extends Component {
           <Title> Count: { count } </Title>
           <Button onClick={this.clickIncrement}>+</Button>
           <Button onClick={this.clickDecrement}>-</Button> 
-          <input ref="entrada" onKeyDown={this.submit} />
+          <input ref="input" onKeyDown={this.submit} />
           <Button onClick={this.clickSet}>SET</Button> 
         </section>
       </div>
