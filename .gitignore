@@ -1,4 +1,6 @@
 # Ignore Node Modules
 /node_modules
 npm-debug.log
+
+# Firebase access
 /src/firebase.config.js

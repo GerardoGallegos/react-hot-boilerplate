@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+
 // actions
 import {
-  increment,
-  decrement
-} from '../../ducks/counter'
+  setFirebaseAsync
+} from '../../actions'
 
 
 
@@ -33,7 +33,9 @@ export class ChildComponent extends Component {
 
     const METHODS = [
       'clickIncrement',
-      'clickDecrement'
+      'clickDecrement',
+      'updateFB',
+      'submit'
     ]
 
     METHODS.forEach((method)=> {
@@ -43,16 +45,40 @@ export class ChildComponent extends Component {
   }
 
   clickIncrement() {
-    this.props.increment()
+    this.updateFB(this.props.count + 1)
   }
 
   clickDecrement() {
-    this.props.decrement()
+    this.updateFB(this.props.count + -1)
+  }
+
+  clickSet() {
+    const input = this.refs.entrada.value
+    this.updateFB(input)
+  }
+
+  updateFB(info) {
+    const info_num = parseInt(info)
+    if(info != '') {
+      if(isNaN(info_num)) {
+        throw 'Is espected number not string'
+      } else {
+        this.props.setFirebaseAsync(info_num)
+      }
+    }
+  }
+
+  submit(e) {
+    const input = this.refs.entrada.value
+    if(e.keyCode === 13 && input != '') {
+      this.updateFB(input)
+    }
   }
 
 
   render() {
     const count = this.props.count
+
     return (
       <div>
         <h2 className="subtitle">This is the child component conected width Redux</h2>
@@ -60,6 +86,8 @@ export class ChildComponent extends Component {
           <Title> Count: { count } </Title>
           <Button onClick={this.clickIncrement}>+</Button>
           <Button onClick={this.clickDecrement}>-</Button> 
+          <input ref="entrada" onKeyDown={this.submit} />
+          <Button onClick={this.clickSet}>SET</Button> 
         </section>
       </div>
     )
@@ -73,6 +101,5 @@ const mapStateProps = (state, props) => {
 }
 
 export default connect(mapStateProps, {
-  increment,
-  decrement
+  setFirebaseAsync
 })(ChildComponent)
