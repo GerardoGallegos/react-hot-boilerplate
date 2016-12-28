@@ -1,6 +1,49 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
+import {
+  AppBar,
+  FlatButton,
+  IconMenu,
+  MenuItem,
+  IconButton
+} from 'material-ui'
+
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
+
+class Menu extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  goChild(route) {
+    browserHistory.push('/child')
+  }
+
+  goHome(route) {
+    browserHistory.push('/')
+  }
+
+  render() {
+    return (
+    <div>
+      <IconMenu
+        iconButtonElement={
+          <IconButton >
+            <MoreVertIcon color="#FFF"/>
+          </IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      >
+        <MenuItem primaryText="Home"  onClick={this.goHome}/>
+        <MenuItem primaryText="Child" onClick={this.goChild} />
+      </IconMenu>
+    </div>
+    )
+  }
+}
 
 
 export class HomeComponent extends Component {
@@ -8,14 +51,12 @@ export class HomeComponent extends Component {
     const count = this.props.count
     return (
         <div>
-          <h1>React Hot Boilerplate Works!</h1>
-          <li><Link to="/">HOME</Link></li>
-          <li><Link to="/child">Child Lazy</Link></li>
-          
-          {
-            this.props.children ||
-            <div>No children component, count: { count }</div>
-          }
+          <AppBar
+            style={{backgroundColor: '#343b34'}}
+            title="~React Hot Boilerplate"
+            iconElementRight={<Menu />}
+          />
+          { this.props.children }
         </div>
     )
   }

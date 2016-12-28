@@ -2,6 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Needed for onTouchTap in material-ui
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin()
 
 import routes from './routes'
 import store from './store/'

@@ -2,12 +2,30 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+import {
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText
+} from 'material-ui/Card'
+
+import {
+  AppBar,
+  FlatButton,
+  RaisedButton,
+  TextField
+} from 'material-ui'
+
+
 // actions
 import {
   setFirebaseAsync
 } from '../../actions'
 
 
+import './styles.css'
 
 const Button = styled.button`
 background-color: orange;
@@ -54,7 +72,7 @@ export class ChildComponent extends Component {
   }
 
   clickSet() {
-    const input = this.refs.input.value
+    const input = this.refs.textField.input.value
     this.updateFB(input)
   }
 
@@ -70,7 +88,9 @@ export class ChildComponent extends Component {
   }
 
   submit(e) {
-    const input = this.refs.input.value
+    const input = this.refs.textField.input.value
+
+    
     if(e.keyCode === 13 && input != '') {
       this.updateFB(input)
     }
@@ -81,16 +101,32 @@ export class ChildComponent extends Component {
     const count = this.props.count
 
     return (
-      <div>
-        <h2 className="subtitle">This is the child component conected width Redux</h2>
-        <section className="card">
-          <Title> Count: { count } </Title>
-          <Button onClick={this.clickIncrement}>+</Button>
-          <Button onClick={this.clickDecrement}>-</Button> 
-          <input ref="input" onKeyDown={this.submit} />
-          <Button onClick={this.clickSet}>SET</Button> 
-        </section>
-      </div>
+      <Card
+        zDepth={3}
+        style={{width: '800px', height: '400px', margin: '20px auto'}}
+        className="animate"
+      >
+        <AppBar
+          style={{backgroundColor: '#2196f3'}}
+          title="Counter"  
+        />
+        <CardTitle title={count} subtitle="Contador desde Firebase + RxJs" />
+        
+        <CardText>
+          Contador Redux + Rxjs + Firebase + Matarial-ui
+        </CardText>
+
+         <CardActions>
+          <TextField
+            ref="textField"
+            onKeyDown={this.submit} 
+            floatingLabelText="Set counter"
+          /><br />
+          <FlatButton label="+" onClick={this.clickIncrement}/>
+          <FlatButton label="-" onClick={this.clickDecrement}/>
+          <RaisedButton backgroundColor="#6bc519" labelColor="#FFF" label="Update" onClick={this.clickSet} />
+        </CardActions>
+      </Card>
     )
   }
 }

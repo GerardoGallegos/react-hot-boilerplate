@@ -36,7 +36,6 @@ export const firebaseDB = (action$) =>
         }))
     ) 
 
-
 Observable.fromEvent(Ref, 'value')
   .subscribe(snap =>
     store.dispatch({

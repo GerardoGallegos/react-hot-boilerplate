@@ -1,0 +1,13 @@
+.animate{
+  animation-fill-mode: forwards;
+  animation: salta .6s ease-out;
+}
+
+@keyframes salta {
+  from {
+    transform: scale(.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}

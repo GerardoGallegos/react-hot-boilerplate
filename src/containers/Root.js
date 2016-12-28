@@ -1,12 +1,16 @@
 import React, { PropTypes  } from 'react'
 import { Router } from 'react-router'
 import { Provider } from 'react-redux'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
 
 const Root = ({history, routes, store})=> {
   return (
-    <Provider store={store} >
-        <Router history={history} routes={routes} />
-    </Provider>
+    <MuiThemeProvider>
+      <Provider store={store} >
+          <Router history={history} routes={routes} />
+      </Provider>
+    </MuiThemeProvider>
   )
 }
 
